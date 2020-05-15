@@ -1,0 +1,550 @@
+@mixin search-box {
+  form {
+    position: relative;
+    input[type=text] {
+      &:focus {
+        outline: 3px $brand-primary solid;
+        color: $gray-darker;
+        background: white;
+        + button .search {
+          color: $brand-primary;
+        }
+      }
+      border: none;
+      padding: 10px;
+      min-width: 255px;
+      color: $gray;
+      border: $input-btn-border-width solid $input-border-color;
+    }
+    button[type=submit] {
+      position: absolute;
+      background: none;
+      border: none;
+      bottom: 0.3125rem;
+      right: 0.125rem;
+      color: $gray;
+      .search:hover {
+        color: $brand-primary;
+      }
+    }
+  }
+}
+
+@mixin box-shadow {
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+@mixin box-shadow-light {
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin box-shadow($shadow...) {
+  -moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+  -moz-box-sizing: $box-model; // Firefox <= 19
+  box-sizing: $box-model;
+}
+
+@mixin animation($content){
+  -webkit-animation: $content;
+  -moz-animation: $content;
+  -o-animation: $content;
+  animation: $content;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder{ @content; }
+  &:-moz-placeholder{ @content; }
+  &::-moz-placeholder{ @content; }
+  &:-ms-input-placeholder{ @content; }
+}
+// Flexbox display
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// The 'flex' shorthand
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex: $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
+}
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+  -moz-flex-flow: $flow;
+  -ms-flex-flow: $flow;
+  flex-flow: $flow;
+}
+
+// Display Order
+// - applies to: flex items
+// <integer>
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+// Flex grow factor
+// - applies to: flex items
+// <number>
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+  -moz-flex-grow: $grow;
+  -ms-flex-grow: $grow;
+  flex-grow: $grow;
+}
+
+// Flex shrink
+// - applies to: flex item shrink factor
+// <number>
+@mixin flex-shrink($shrink) {
+  -webkit-flex-shrink: $shrink;
+  -moz-flex-shrink: $shrink;
+  -ms-flex-shrink: $shrink;
+  flex-shrink: $shrink;
+}
+
+// Flex basis
+// - the initial main size of the flex item
+// - applies to: flex itemsnitial main size of the flex item
+// <width>
+@mixin flex-basis($width) {
+  -webkit-flex-basis: $width;
+  -moz-flex-basis: $width;
+  -ms-flex-basis: $width;
+  flex-basis: $width;
+}
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+
+// Packing Flex Lines
+// - applies to: multi-line flex containers
+// flex-start | flex-end | center | space-between | space-around | stretch
+@mixin align-content($align) {
+  -webkit-align-content: $align;
+  -moz-align-content: $align;
+  -ms-align-content: $align;
+  align-content: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch
+@mixin align-self($align) {
+  -webkit-align-self: $align;
+  -moz-align-self: $align;
+  -ms-align-self: $align;
+  align-self: $align;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin transition($content...){
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -o-transition: $content;
+  -ms-transition: $content;
+  transition: $content;
+}
+
+@mixin border-radius($val){
+  -webkit-border-radius: $val $val $val $val;
+  -moz-border-radius: $val $val $val $val;
+  border-radius: $val $val $val $val;
+}
+
+@mixin m-border-radius($val1, $val2, $val3, $val4){
+  -webkit-border-radius: $val1 $val2 $val3 $val4;
+  -moz-border-radius: $val1 $val2 $val3 $val4;
+  border-radius: $val1 $val2 $val3 $val4;
+}
+
+@mixin blur($amount){
+  filter: blur($amount);
+  -webkit-filter: blur($amount);
+  -moz-filter: blur($amount);
+  -o-filter: blur($amount);
+  -ms-filter: blur($amount);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=$amount);
+}
+
+@mixin filter($content){
+  filter: $content;
+  -webkit-filter: $content;
+  -moz-filter: $content;
+  -o-filter: $content;
+  -ms-filter: $content;
+}
+
+@mixin trOrigin($x, $y){
+  -webkit-transform-origin: $x $y;
+  -moz-transform-origin: $x $y;
+  -o-transform-origin: $x $y;
+  -ms-transform-origin: $x $y;
+  transform-origin: $x $y;
+}
+
+@mixin columnCount($count, $ecart, $style, $width, $color:#000000){
+  -moz-column-count:$count;
+  -moz-column-gap:$ecart;
+  -moz-column-rule:$width $style;
+  -webkit-column-count:$count;
+  -webkit-column-gap:$ecart;
+  -webkit-column-rule:$width $style;
+  -o-column-count:$count;
+  -o-column-gap:$ecart;
+  -o-column-rule: $width $style;
+  column-count:$count;
+  column-gap:$ecart;
+  column-rule: $width $style;
+  column-rule-color: $color;
+  column-rule-color: $color;
+  -o-column-rule-color: $color;
+  -webkit-column-rule-color: $color;
+  -moz-column-rule-color: $color;
+  -khtml-column-rule-color: $color;
+}
+
+@mixin user-select(){
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+          eot: "?",
+          svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+          otf: "opentype",
+          ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+
+@mixin line-height($fontsize, $lineheight ){
+
+  line-height: ($lineheight) + px;
+  line-height: ($lineheight/10) + rem;
+
+  margin-top: (($lineheight - $fontsize)/2 * -1) + px;
+  margin-top: ((($lineheight - $fontsize)/2 * -1) / 10 ) + rem
+}
+
+/* Letter spacing is simpler.. stolen from somewhere */
+@mixin letter-spacing($letterspacing) {
+  letter-spacing: $letterspacing/1000 + em;
+}
+
+/* font-size to rem with backup, stolen from somewhere */
+@mixin font-size($sizeValue: 16, $relative: false) {
+  font-size: ($sizeValue) + px;
+
+  @if ($relative) {
+
+    font-size: pxToEm($sizeValue);
+
+  } @else{
+
+    font-size: pxToRem($sizeValue);
+
+  }
+}
+
+/**
+ * Gives a card depth effect.
+ *
+ * @param {Number} $depth - depth level (between 1 and 5)
+ *
+ * @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+ *
+ * @requires {function} top-shadow
+ * @requires {function} bottom-shadow
+ */
+@mixin material-shadow($depth, $color: #000) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn "Invalid $depth `#{$depth}` for mixin `card`.";
+  } @else {
+    box-shadow: bottom-shadow($depth, $color), top-shadow($depth, $color);
+  }
+}
+
+// ANIMATIONS
+@mixin underline-from-left($color){
+
+  &:before{
+    position: absolute;
+    z-index: 1;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color;
+    transform-origin: left;
+    @include transform(scaleX(0));
+    @include transition(transform .3s $easeOutQuad);
+  }
+
+  @media (min-width: $mobile+1){
+
+    &:hover{
+
+      &:before{
+        @include transform(scaleX(1));
+      }
+
+    }
+
+  }
+
+}
+
+// =============================================================================
+// Scrollbar
+// =============================================================================
+@mixin scrollbar($size) {
+
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+    background-color: rgba(0,0,0,0);
+    -webkit-border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.5);
+    -webkit-border-radius: 100px;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+    -webkit-border-radius: 100px;
+  }
+
+  /* add vertical min-height & horizontal min-width */
+  &::-webkit-scrollbar-thumb:vertical {
+    min-height: $size;
+  }
+  &::-webkit-scrollbar-thumb:horizontal {
+    min-width: $size;
+  }
+
+}
+@mixin background-linearGradient($from, $to, $stop: 100%) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $from), color-stop($stop, $to));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient(left, $from 0%, $to $stop);
+
+  /* IE10+ */
+  background: -ms-linear-gradient(left, $from 0%, $to $stop);
+
+  /* Standard */
+  background: linear-gradient(to right, $from 0%, $to $stop);
+
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$from', endColorstr='$to', GradientType=1);
+}
+
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
+  text-shadow: $x $y $blur $color;
+}
+
+
+/************************************************
+ *************** FUNCTION ORDER *****************
+ ************************************************/
+
+@mixin transitionTest {
+  @for $i from 0 through 20 {
+    @if ($i % 2) != 1 {
+      &:nth-child(#{$i + 1}){
+        order: $i;
+      }
+    }
+
+    //&:nth-child(#{$i}) {
+    //  &.img + .bloc.text{
+    //    order: #{$i - 1};
+    //  }
+    //  order: #{$i + 1};
+    //}
+
+  }
+}
+
+/************************************************
+ **************** Animate link ******************
+ ************************************************/
+
+@mixin animationLink($color, $range) {
+  position: relative;
+  color: transparent;
+  display: inline-block;
+  @include transition(opacity .4s cubic-bezier(.23,1,.32,1));
+  &:hover{
+    &:before{
+      transition-delay: 0s;
+      opacity: 0!important;
+      @include transform(translateY(-$range));
+    }
+    &:after{
+      transition-delay: 80ms;
+      opacity: 1;
+      @include transform(translateY(0));
+    }
+  }
+  &:before, &:after{
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    color: $color;
+    pointer-events: none;
+    @include transition(transform .4s cubic-bezier(.23,1,.32,1), opacity .4s cubic-bezier(.23,1,.32,1));
+  }
+  &:before{
+    opacity: 1;
+    transition-delay: 80ms;
+  }
+  &:after{
+    opacity: 0;
+    transition-delay: 0s;
+    @include transform(translateY($range));
+  }
+}

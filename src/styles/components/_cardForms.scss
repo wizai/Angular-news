@@ -1,0 +1,76 @@
+.formCards {
+  position: absolute;
+  background-color: $white;
+  bottom: -100%;
+  left: 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 100%;
+  padding: 3rem;
+  visibility: hidden;
+  z-index: 10;
+  @include transition(all 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955));
+  @include box-shadow(0 0px 6px 0 hsla(0, 0%, 0%, 0.2));
+
+  &.open {
+    bottom: 0;
+    visibility: visible;
+  }
+
+  &__close {
+    position: absolute;
+    top: 45px;
+    right: 3rem;
+    width: 40px;
+    height: 40px;
+    background-color: #f3f3f4;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    z-index: 11;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  &__row {
+    margin-bottom: 3rem;
+
+    label {
+      color: hsl(0, 0%, 45%);
+    }
+
+    input {
+      border: 0;
+      border-bottom: 1px solid hsl(220%, 12%, 95%);
+      resize: none;
+      width: 100%;
+      padding: 12px 0;
+      color: $black;
+      font-weight: 500;
+      font-family: $Circular;
+      outline: none;
+    }
+  }
+
+  &__actions {
+    text-align: center;
+    margin-top: 5rem;
+    button[type="submit"] {
+      border: 0;
+      width: 100%;
+      max-width: 300px;
+      padding: 12px 15px;
+      background-color: $blue;
+      color: $white;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      font-family: $Circular;
+      outline: none;
+    }
+  }
+}
