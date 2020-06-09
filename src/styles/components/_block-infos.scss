@@ -1,0 +1,15 @@
+.block-infos{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: $whiteLight;
+  padding: 20px;
+  margin-bottom: 3rem;
+  p{
+    margin-bottom: 10px;
+    max-width: 250px;
+    b{
+      font-weight: 900;
+    }
+  }
+}

@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient  } from '@angular/common/http';
-import {error} from 'selenium-webdriver';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsApiService {
 
-  apiKey = '18be628568e0469bbe75365552c3154f';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-  initSources(): Promise<any> {
-    return this.http.get('https://newsapi.org/v2/sources?language=en&apiKey=' + this.apiKey).toPromise()
-      .then( data => data)
-      .catch(err => err);
+  getSources() {
+    return this.http.post(`${environment.API_URL}/news/sources`, {news_api_token: environment.NEWS_API_KEY});
   }
-  initArticles(): Promise<any> {
-    return this.http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=' + this.apiKey).toPromise()
-      .then( data => data)
-      .catch(err => err);
+
+  getArticles(source, keyword) {
+    return this.http.post(`${environment.API_URL}/news/${source}/${keyword}`, {news_api_token: environment.NEWS_API_KEY});
   }
-  getArticlesByID(source: string): Promise<any> {
-    return this.http.get('https://newsapi.org/v2/top-headlines?sources=' + source + '&apiKey=' + this.apiKey).toPromise()
-    .then( data => data)
-    .catch(err => err);
+
+  getArticlesByCountry(country) {
+    return this.http.get(`${environment.NEWS_API_URL}/top-headlines?country=${country}&apiKey=${environment.NEWS_API_KEY}`);
+  }
+
+  getArticlesByWord(word) {
+    return this.http.get(`${environment.NEWS_API_URL}/everything?q=${word}&apiKey=${environment.NEWS_API_KEY}`);
   }
 }

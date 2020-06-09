@@ -1,13 +1,31 @@
+// Modules
+@import "~angular-notifier/styles";
+.notifier__notification{
+  position: absolute;
+}
+
 // Theme Blog
 @import "styles/partials/reset";
 @import "styles/partials/variables";
 @import "styles/partials/mixins";
 @import "styles/partials/commons";
 @import "styles/partials/animations";
+@import "styles/partials/header";
+@import "styles/partials/form";
 
 // Theme Blog - Library
 
 // Theme Blog - Components
+@import "styles/components/article";
+@import "styles/components/searchForm";
+@import "styles/components/slider_articles";
+@import "styles/components/block-infos";
+@import "styles/components/block-bookmarks";
 
 // Theme Blog - Pages
-
+@import "styles/pages/homepage";
+@import "styles/pages/login";
+@import "styles/pages/register";
+@import "styles/pages/resultSearch";
+@import "styles/pages/profil";
+@import "styles/pages/404";

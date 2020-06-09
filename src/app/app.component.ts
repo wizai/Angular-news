@@ -1,29 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-import { NewsApiService } from './services/news-api/news-api.service';
+import { FadeAnimation } from './animations/fadeInAnimation';
+import { AuthService } from './components/auth/auth.service';
+import { SearchService } from './services/search/search.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  animations: [ FadeAnimation ]
 })
 export class AppComponent implements OnInit {
+  title = 'News';
 
-  Articles: Array<any>;
-  Sources: Array<any>;
-
-  constructor(private newsapi: NewsApiService) {
-    console.log('app component constructor called');
+  constructor(
+    private router: Router,
+    public searchService: SearchService,
+    private authService: AuthService
+  ) {
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.searchService.showForm = false;
+      }
+    });
   }
-
-  ngOnInit() {
-    console.log('hello')
-    this.newsapi.initArticles().then(data => this.Articles = data.articles);
-    this.newsapi.initSources().then(data => this.Sources = data.sources);
+  async ngOnInit() {
+    await this.authService.autoAuthUser();
   }
-
-  searchArticles(source) {
-    console.log('selected source is: ' + source);
-    this.newsapi.getArticlesByID(source).then(data => this.Articles = data.articles);
-  }
-
 }

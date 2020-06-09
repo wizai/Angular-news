@@ -1,0 +1,27 @@
+<section class="page_resultSearch">
+  <div class="page__header">
+    <a routerLink="/" class="page__header--link">
+      <i class="icon-arrow"></i>
+    </a>
+  </div>
+  <div class="page__title">
+    <h2>{{ Source.name }}</h2>
+    <div class="page__title--row w100" *ngIf="currentUser">
+      <p>You can add this source to your bookmarks</p>
+      <span class="btn" (click)="addToBookmarks(Source.id)" *ngIf="!isInBookmark">Add to bookmark</span>
+      <span class="btn" (click)="removeFromBookmarks(Source.id)" *ngIf="isInBookmark">Remove bookmark</span>
+    </div>
+  </div>
+  <div *ngIf="Articles?.length > 0">
+    <article *ngFor="let article of Articles | slice:0:10" class="article" >
+      <app-article
+        [article]="article">
+      </app-article>
+    </article>
+  </div>
+  <div class="block-infos" *ngIf="Articles.length <= 0">
+    <p>Sorry! No result found :( <br> <b>We're sorry what you were looking for.</b> <br>Please try another way</p>
+    <span class="btn btn-black" (click)="searchService.toggle()">Start research</span>
+  </div>
+</section>
+

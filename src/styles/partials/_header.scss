@@ -1,0 +1,22 @@
+.header{
+  margin: 2rem 0 4rem;
+  position: relative;
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+  &__title{
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: $black;
+  }
+  &__actions{
+    margin-left: auto;
+    &--search, &--login{
+      padding: 8px 10px !important;
+      font-size: 1.4rem !important;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+}

@@ -98,3 +98,47 @@
   font-style: italic;
   font-display: auto;
 }
+
+@font-face {
+  font-family: 'icons';
+  src:  url('styles/fonts/icons.eot?25kahe');
+  src:  url('styles/fonts/icons.eot?25kahe#iefix') format('embedded-opentype'),
+  url('styles/fonts/icons.woff2?25kahe') format('woff2'),
+  url('styles/fonts/icons.ttf?25kahe') format('truetype'),
+  url('styles/fonts/icons.woff?25kahe') format('woff'),
+  url('styles/fonts/icons.svg?25kahe#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\e900";
+}
+.icon-arrow:before {
+  content: "\e901";
+}
+.icon-user:before {
+  content: "\e902";
+}
+.icon-bookmarked:before {
+  content: "\e903";
+}
+.icon-bookmark:before {
+  content: "\e904";
+}

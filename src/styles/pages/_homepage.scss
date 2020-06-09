@@ -1,0 +1,11 @@
+.page_homepage{
+  & > .page__title{
+    margin-bottom: 3rem;
+  }
+  .block_articles{
+    margin-bottom: 3rem;
+    .page__title{
+      margin-bottom: 2rem;
+    }
+  }
+}

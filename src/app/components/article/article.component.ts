@@ -4,13 +4,13 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-article',
   templateUrl: './article.component.html',
 })
+
 export class ArticleComponent implements OnInit {
 
   @Input() article: any;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
 }

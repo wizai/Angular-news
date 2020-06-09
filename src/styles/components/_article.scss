@@ -1,0 +1,32 @@
+.article{
+  margin-bottom: 25px;
+  &__link{
+    color: $black;
+    text-decoration: none !important;
+    outline: none !important;
+    @include flexbox();
+    @include align-items(center);
+  }
+  &__img{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 100px;
+    height: 75px;
+    background-size: cover;
+    background-position: center center;
+    @include flex-shrink(0)
+  }
+  &__txt{
+    padding-left: 15px;
+    @include flex-grow(1)
+  }
+  &__title{
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  &__date{
+    font-size: 1.2rem;
+    color: $grey;
+  }
+}

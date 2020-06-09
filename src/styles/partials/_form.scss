@@ -1,0 +1,96 @@
+.custom_form{
+  &__row{
+    margin-bottom: 20px;
+    position: relative;
+    &.error{
+      input{
+        border-color: $red;
+      }
+      label{
+        color: $red;
+        font-weight: 700;
+        @include transform(scale(0.75) translate(-10px,-35px));
+      }
+      .page_loginCreate__row--error{
+        opacity: 1;
+        @include transform(translate(0));
+      }
+    }
+    input, textarea, select{
+      width: 100%;
+      color: $black;
+      background-color: $whiteLight;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      font-weight: 600;
+      padding: 15px;
+      width: 100%;
+      display: block;
+      font-family: $Circular;
+      font-size: 1.4rem;
+      border: 0;
+      outline: none;
+      resize: none;
+      @include transition(border-color .15s cubic-bezier(.4,0,.2,1));
+      option{
+        outline: none;
+        border: 0;
+        line-height: 3;
+        padding: 5px 0;
+      }
+      &:focus, &:not(:placeholder-shown){
+        & + label{
+          color: $black;
+          font-weight: 600;
+          @include transform(scale(0.75) translate(-10px,-35px));
+        }
+      }
+    }
+    label{
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: #9ca1a9;
+      font-family: $Circular;
+      overflow: hidden;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: auto;
+      z-index: 1;
+      display: block;
+      font-size: 1.4rem;
+      @include transition(transform .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1))
+    }
+    &--error{
+      color: $red;
+      font-size: 1.2rem;
+      text-align: left;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      @include transform(translateY(5px));
+      @include transition(all .3s ease-in-out);
+    }
+  }
+  &__actions{
+    input, button{
+      cursor: pointer;
+      border: 0;
+      padding: 12px 15px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      font-family: $Circular;
+      outline: none;
+      background-color: $black;
+      color: $white;
+      min-width: 150px;
+      margin: 0 auto;
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<section class="page_login">
+  <div class="page__header">
+    <a routerLink="/" class="page__header--link">
+      <i class="icon-arrow"></i>
+    </a>
+  </div>
+  <div class="page__title">
+    <h2>Information</h2>
+    <div class="page__title--row w100">
+      <p>You are not register</p>
+      <a routerLink="/auth/register" class="btn">Create an account</a>
+    </div>
+  </div>
+  <div class="block-infos">
+    <p>You can register to Angular News <b>in order to get access to various sources of information </b></p>
+    <a routerLink="/auth/register" class="btn btn-black">Register</a>
+  </div>
+  <div class="page__title">
+    <h1>Login</h1>
+  </div>
+  <form (submit)="onLogin()" [formGroup]="form" class="custom_form">
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.email.errors }">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder=" "
+        formControlName="email">
+      <label for="email">E-mail</label>
+      <span class="custom_form__row--error" *ngIf="form.get('email')">Invalid email address</span>
+    </div>
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.password.errors }">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        placeholder=" "
+        formControlName="password">
+      <label for="password">Password</label>
+      <span class="custom_form__row--error"  *ngIf="form.get('password')">Incorrect password</span>
+    </div>
+    <div class="custom_form__actions">
+      <input type="submit" value="Login" class="btn">
+    </div>
+  </form>
+</section>

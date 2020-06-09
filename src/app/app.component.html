@@ -1,11 +1,11 @@
 <div id="root">
   <div class="App">
     <div class="container">
-      <article *ngFor="let item of Articles" class="article">
-        <app-article
-          [article]="item">
-        </app-article>
-      </article>
+      <div [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''" class="container-transition">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+      <notifier-container></notifier-container>
+      <app-search></app-search>
     </div>
   </div>
 </div>

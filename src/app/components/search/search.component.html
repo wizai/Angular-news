@@ -1,0 +1,31 @@
+<div class="searchForm" [ngClass]="searchService.showForm ? 'open' : ''">
+  <span class="searchForm__close" (click)="searchService.toggle()">&#10005;</span>
+  <p class="searchForm__title">Search</p>
+  <form (submit)="onSearch()" [formGroup]="form" class="searchForm__form custom_form">
+  <!--<form [formGroup]="form" class="searchForm__form custom_form">-->
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.source.errors }">
+      <select
+        name="source"
+        id="source"
+        formControlName="source">
+        <option value="null" disabled>Select source</option>
+        <option value="{{ source.id }}" [selected]="source.id === sourceSelected" *ngFor="let source of Sources">{{ source.name }}</option>
+      </select>
+      <label for="source">Information source</label>
+      <!--<span class="custom_form__row&#45;&#45;error" *ngIf="form.get('source')">Source is required</span>-->
+    </div>
+    <div class="custom_form__row">
+      <input
+        type="text"
+        id="keyword"
+        name="keyword"
+        placeholder=" "
+        formControlName="keyword">
+      <label for="keyword">Keywords</label>
+    </div>
+    <div class="searchForm__form--actions">
+      <input type="reset" value="Reset" class="btn" (click)="onReset()">
+      <input type="submit" value="Search" class="btn btn-black" [disabled]="!form.valid">
+    </div>
+  </form>
+</div>

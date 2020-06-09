@@ -1,0 +1,22 @@
+<div class="block_articles">
+  <div class="page__title">
+    <h2>{{ country }}</h2>
+    <div class="page__title--row">
+      <!--<a routerLink="/login" class="block_articles__header&#45;&#45;showAll btn">Show all</a>-->
+    </div>
+  </div>
+</div>
+<div class="slider_articles">
+  <swiper [config]="config">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slider_articles__slide" *ngFor="let article of ArticlesCountry">
+        <div class="slider_articles__slide--bg" [ngStyle]="{'background-image': 'url(' + article.urlToImage +' )'}"></div>
+        <div class="slider_articles__slide--text">
+          <p class="slider_articles__slide--title">{{ article.title }}</p>
+          <a href={{article.url}} target="_blank" class="slider_articles__slide--link">Voir l'article</a>
+        </div>
+      </div>
+
+    </div>
+  </swiper>
+</div>

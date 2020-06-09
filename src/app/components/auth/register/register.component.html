@@ -1,0 +1,70 @@
+<section class="page_register">
+  <div class="page__header">
+    <a routerLink="/" class="page__header--link">
+      <i class="icon-arrow"></i>
+    </a>
+  </div>
+  <div class="page__title">
+    <h1>Create an account</h1>
+  </div>
+  <form (submit)="onRegister()" [formGroup]="form" class="custom_form">
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.firstname.errors }">
+      <input
+        type="text"
+        id="register_firstname"
+        name="register_firstname"
+        required
+        placeholder=" "
+        formControlName="firstname">
+      <label for="register_firstname">First name</label>
+      <span class="custom_form__row--error" *ngIf="form.get('firstname')">Invalid email address</span>
+    </div>
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.lastname.errors }">
+      <input
+        type="text"
+        id="register_lastname"
+        name="register_lastname"
+        required
+        placeholder=" "
+        formControlName="lastname">
+      <label for="register_lastname">Last name</label>
+      <span class="custom_form__row--error" *ngIf="form.get('lastname')">Invalid email address</span>
+    </div>
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.email.errors }">
+      <input
+        type="email"
+        id="register_mail"
+        name="register_mail"
+        required
+        placeholder=" "
+        formControlName="email">
+      <label for="register_mail">E-mail</label>
+      <span class="custom_form__row--error" *ngIf="form.get('email')">Invalid email address</span>
+    </div>
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.password.errors || form.hasError('differents') }">
+      <input
+        type="password"
+        id="register_password"
+        name="register_password"
+        required
+        placeholder=" "
+        formControlName="password">
+      <label for="register_password">Password</label>
+      <span class="custom_form__row--error" *ngIf="form.get('password')">Incorrect password</span>
+    </div>
+    <div class="custom_form__row" [ngClass]="{ 'error': submitted && f.confirmPassword.errors || form.hasError('differents') }">
+      <input
+        type="password"
+        id="register_repeatPassword"
+        name="register_repeatPassword"
+        required
+        placeholder=" "
+        formControlName="confirmPassword">
+      <label for="register_repeatPassword">Confirm password</label>
+      <span class="custom_form__row--error" *ngIf="form.get('confirmPassword')">Password must match</span>
+    </div>
+    <div class="custom_form__actions">
+      <input type="submit" value="Register" class="btn" >
+    </div>
+  </form>
+</section>

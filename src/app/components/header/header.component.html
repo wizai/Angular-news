@@ -1,0 +1,14 @@
+<header class="header">
+  <a routerLink="/" class="header__title">Angular News</a>
+  <div class="header__actions">
+    <span class="header__actions--search btn" (click)="searchService.toggle()">
+      <i class="icon-search"></i>
+    </span>
+    <a class="header__actions--login btn" routerLink="/auth/login"  *ngIf="!currentUser">
+      <i class="icon-user"></i>
+    </a>
+    <a class="header__actions--login btn" routerLink="/auth/profil"  *ngIf="currentUser">
+      <i class="icon-user"></i>
+    </a>
+  </div>
+</header>

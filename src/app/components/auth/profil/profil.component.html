@@ -1,0 +1,33 @@
+<section class="page_profil">
+  <div class="page__header">
+    <a routerLink="/" class="page__header--link">
+      <i class="icon-arrow"></i>
+    </a>
+  </div>
+  <div class="page__title">
+    <h2>My profil</h2>
+  </div>
+  <div class="page_profil__user">
+    <p class="page_profil__user--firstname" *ngIf="currentUser">{{ currentUser.user.firstname }} </p>
+    <p class="page_profil__user--lastname" *ngIf="currentUser">{{ currentUser.user.lastname }}</p>
+    <!--<p class="page_profil__user&#45;&#45;email">{{ currentUser.email }}</p>-->
+    <span (click)="logout()" class="page_profil__user--logout">Logout</span>
+  </div>
+  <div class="page__title">
+    <h2>My bookmarks</h2>
+  </div>
+  <div class="page_profil__bookmarks" *ngIf="currentUser">
+    <div *ngFor="let bookmark of currentUser.bookmark" class="block-bookmarks" [ngClass]="{'removed': bookmark.remove}">
+      <a [routerLink]="['/result']" [queryParams]="{'source': bookmark.id}" class="block-bookmarks__link"></a>
+      <p class="block-bookmarks__title">
+        {{ bookmark.name }}
+        <span (click)="removeFromBookmarks(bookmark.id, bookmark)" class="block-bookmarks__remove">&#x2715;</span>
+      </p>
+      <p class="block-bookmarks__description">{{ bookmark.description }}</p>
+    </div>
+    <div class="block-infos" *ngIf="currentUser.bookmark && currentUser.bookmark.length <= 0">
+      <p>You have no bookmark. <br> <b>You can add them by doing a search.</b></p>
+      <span class="btn btn-black" (click)="searchService.toggle()">Start research</span>
+    </div>
+  </div>
+</section>

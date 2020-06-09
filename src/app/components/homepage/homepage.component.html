@@ -1,0 +1,38 @@
+<app-header></app-header>
+<section class="page_homepage">
+  <div class="page__title" *ngIf="!currentUser">
+    <h2>Information</h2>
+    <div class="page__title--row w100">
+      <p>You are not register</p>
+      <a routerLink="/auth/register" class="btn">Create an account</a>
+    </div>
+  </div>
+  <div class="block-infos" *ngIf="!currentUser">
+    <p>Get breaking news headlines, <b>and search for articles from news sources and blogs </b>all over the web</p>
+    <span class="btn btn-black" (click)="searchService.toggle()">Start research</span>
+  </div>
+  <app-slider-articles
+    [ArticlesCountry]="ArticlesCountry"
+    country="Top headlines"
+  ></app-slider-articles>
+  <div *ngIf="currentUser && currentUser.bookmark?.length > 0">
+    <div *ngFor="let bookmark of Bookmarks; let i = index" class="block_articles">
+      <div class="page__title">
+        <h2>{{ bookmark.name }}</h2>
+        <div class="page__title--row">
+          <a [routerLink]="['/result']" [queryParams]="{'source': bookmark.id}" class="block_articles__header--showAll btn">Show all</a>
+        </div>
+      </div>
+      <article *ngFor="let article of Articles[i] | slice:0:5" class="article">
+        <app-article
+          [article]="article">
+        </app-article>
+      </article>
+    </div>
+  </div>
+  <div class="block-infos" *ngIf="currentUser && currentUser.bookmark.length <= 0">
+    <p>You have no bookmark. <br> <b>You can add them by doing a search.</b></p>
+    <span class="btn btn-black" (click)="searchService.toggle()">Start research</span>
+  </div>
+</section>
+

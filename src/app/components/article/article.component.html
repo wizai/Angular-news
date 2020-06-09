@@ -1,2 +1,7 @@
-<h2 class="article__title">{{article.title}}</h2>
-<img src="{{ article.urlToImage}}.png" alt="">
+<a href={{article.url}} target="_blank" class="article__link">
+  <div class="article__img" [ngStyle]="{'background-image': 'url(' + article.urlToImage +' )'}"></div>
+  <div class="article__txt">
+    <p class="article__title">{{ (article.title.length>40)? (article.title | slice:0:40)+'...':(article.title) }}</p>
+    <p class="article__date">{{article.publishedAt | date:'MMM d, y • h:mm a'}}</p>
+  </div>
+</a>
